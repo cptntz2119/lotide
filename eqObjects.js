@@ -31,20 +31,18 @@ const eqObjects = (object1, object2) => {
   let values1 = Object.values(object1);
   let values2 = Object.values(object2);
   console.log(key1, key2, values1, values2);
-  if (key1.length !== key1.length) {
+  if (key1.length !== key2.length) {
     return false;
   }
   for (let key of key1) {
-    if (!key2.includes(key)) {
+    if (Array.isArray(object1[key])) {
+      if (!eqArrays(object1[key], object2[key])) {
+        return false;
+      }
+    } else if (object1[key] !== object2[key]) {
       return false;
     }
   }
-  for (let value of values1) {
-    if (!values2.includes(value)) {
-      return false;
-    }
-  }
-
   return true;
 };
 
