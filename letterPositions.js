@@ -1,3 +1,4 @@
+
 const letterPositions = function (sentence) {
   const results = {};
   for (let i = 0; i < sentence.length; i++) {
@@ -44,3 +45,4 @@ const eqArrays = (arr1, arr2) => {
 console.log(letterPositions("hello"));
 assertEqual(letterPositions("hello"), { h: [0], e: [1], l: [2, 3], o: [4] });
 assertEqual(letterPositions("hello").e, [1]);
+
