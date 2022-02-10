@@ -11,17 +11,21 @@ const assertEqual = function (actual, expected) {
     );
   }
 };
+const countLetters = (sentenceStr) => {
+  const result = {};
+  //let noSpaceStr = sentenceStr.replaceAll(" ", "");
+  //console.log(noSpaceStr);
+  for (let letter of sentenceStr) {
+    //console.log(letter);
 
-const eqArrays = (arr1, arr2) => {
-  if (arr1.length !== arr2.length) {
-    return false;
-  }
-
-  for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) {
-      return false;
+    if (result[letter]) {
+      result[letter] += 1;
+    } else if (letter === " ") {
+      process.exit;
+    } else {
+      result[letter] = 1;
     }
   }
-  return true;
+  return result;
 };
-assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true); // => should PASS
+console.log(countLetters("lighthouse in the house"));

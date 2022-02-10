@@ -1,13 +1,17 @@
 // FUNCTION IMPLEMENTATION
+
 const assertEqual = function (actual, expected) {
   const emojiFail = String.fromCodePoint(0x1f6d1);
   const emojiPass = String.fromCodePoint(0x1f7e9);
-  console.assert(actual === expected, [
-    `${emojiFail}${emojiFail}${emojiFail} Assertion Failed: ${actual} !== ${expected}`,
-  ]);
-  console.assert(actual !== expected, [
-    `${emojiPass}${emojiPass}${emojiPass} Assertion Passed: ${actual} === ${expected}`,
-  ]);
+  if (actual === expected) {
+    console.log(
+      `${emojiPass}${emojiPass}${emojiPass} Assertion Passed: ${actual} === ${expected}`
+    );
+  } else {
+    console.log(
+      `${emojiFail}${emojiFail}${emojiFail} Assertion Failed: ${actual} !== ${expected}`
+    );
+  }
 };
 
 const tail = (arr) => {

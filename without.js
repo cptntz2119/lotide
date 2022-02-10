@@ -1,12 +1,15 @@
 const assertEqual = function (actual, expected) {
   const emojiFail = String.fromCodePoint(0x1f6d1);
   const emojiPass = String.fromCodePoint(0x1f7e9);
-  console.assert(eqArrays(actual, expected), [
-    `${emojiFail}${emojiFail}${emojiFail} Assertion Failed: ${actual} !== ${expected}`,
-  ]);
-  console.assert(!eqArrays(actual, expected), [
-    `${emojiPass}${emojiPass}${emojiPass} Assertion Passed: ${actual} === ${expected}`,
-  ]);
+  if (actual === expected) {
+    console.log(
+      `${emojiPass}${emojiPass}${emojiPass} Assertion Passed: ${actual} === ${expected}`
+    );
+  } else {
+    console.log(
+      `${emojiFail}${emojiFail}${emojiFail} Assertion Failed: ${actual} !== ${expected}`
+    );
+  }
 };
 
 const eqArrays = (arr1, arr2) => {
@@ -28,7 +31,7 @@ const without = (arrSrc, arrRm) => {
     if (!arrSrc.includes(ele)) {
       return arrSrc;
     }
-  // if remove arr has the same in arrSrc, then filter out the elemeent from arrSrc
+    // if remove arr has the same in arrSrc, then filter out the elemeent from arrSrc
     if (arrSrc.includes(ele)) {
       return arrSrc.filter(function (elem) {
         return elem != ele;

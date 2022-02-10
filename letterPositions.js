@@ -1,3 +1,18 @@
+const letterPositions = function (sentence) {
+  const results = {};
+  for (let i = 0; i < sentence.length; i++) {
+    let letter = sentence[i];
+    if (results[letter]) {
+      results[letter].push(i);
+    } else if (letter === " ") {
+      process.exit;
+    } else {
+      results[letter] = [i];
+    }
+  }
+
+  return results;
+};
 const assertEqual = function (actual, expected) {
   const emojiFail = String.fromCodePoint(0x1f6d1);
   const emojiPass = String.fromCodePoint(0x1f7e9);
@@ -25,20 +40,7 @@ const eqArrays = (arr1, arr2) => {
   return true;
 };
 
-const flatten = (arr) => {
-  let result = [];
-  for (let ele of arr) {
-    if (typeof ele === "number") {
-      result.push(ele);
-    }
-    if (Array.isArray(ele)) {
-      for (let elem of ele) {
-        result.push(elem);
-      }
-    }
-  }
-  return result;
-};
-console.log(flatten([1, 2, [3, 4], 5, [6]]));
-console.log(flatten([1, 2, 3]));
-console.log(flatten([1, 2, [3, [1, 2], 4], 5, [6]]));
+//console.log(letterPositions("lighthouse in the house"));
+console.log(letterPositions("hello"));
+assertEqual(letterPositions("hello"), { h: [0], e: [1], l: [2, 3], o: [4] });
+assertEqual(letterPositions("hello").e, [1]);
