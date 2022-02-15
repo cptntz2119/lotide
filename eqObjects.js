@@ -1,16 +1,4 @@
-const assertEqual = function (actual, expected) {
-  const emojiFail = String.fromCodePoint(0x1f6d1);
-  const emojiPass = String.fromCodePoint(0x1f7e9);
-  if (eqArrays(actual, expected)) {
-    console.log(
-      `${emojiPass}${emojiPass}${emojiPass} Assertion Passed: ${actual} === ${expected}`
-    );
-  } else {
-    console.log(
-      `${emojiFail}${emojiFail}${emojiFail} Assertion Failed: ${actual} !== ${expected}`
-    );
-  }
-};
+const assertEqual = require("./assertEqual");
 
 const eqArrays = (arr1, arr2) => {
   if (arr1.length !== arr2.length) {
@@ -30,7 +18,7 @@ const eqObjects = (object1, object2) => {
   let key2 = Object.keys(object2);
   let values1 = Object.values(object1);
   let values2 = Object.values(object2);
-  console.log(key1, key2, values1, values2);
+  //console.log(key1, key2, values1, values2);
   if (key1.length !== key2.length) {
     return false;
   }
@@ -45,10 +33,10 @@ const eqObjects = (object1, object2) => {
   }
   return true;
 };
+module.exports = eqObjects;
+// const cd = { c: "1", d: ["2", 3] };
+// const dc = { d: ["2", 3], c: "1" };
+// console.log(eqObjects(cd, dc)); // => true
 
-const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1" };
-console.log(eqObjects(cd, dc)); // => true
-
-const cd2 = { c: "1", d: ["2", 3, 4] };
-console.log(eqObjects(cd, cd2)); // => false
+// const cd2 = { c: "1", d: ["2", 3, 4] };
+// console.log(eqObjects(cd, cd2)); // => false
