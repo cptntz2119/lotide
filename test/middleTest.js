@@ -37,3 +37,5 @@ describe("#middle", () => {
     //console.log(middle([1]));
   });
 });
+
+//update with chai

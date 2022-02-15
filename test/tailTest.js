@@ -21,3 +21,5 @@ describe("#tail", () => {
     assert.strictEqual(tail(["Hello", "Lighthouse", "Labs"])[0], "Lighthouse");
   });
 });
+
+//update with chai
